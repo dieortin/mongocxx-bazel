@@ -1,0 +1,33 @@
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
+
+filegroup(
+    name = "all_srcs",
+    srcs = glob(["**"]),
+)
+
+cmake(
+    name = "mongocxx",
+    lib_source = ":all_srcs",
+    out_static_libs = [
+        "libmongocxx-static.a",
+        "libbsoncxx-static.a",
+    ],
+    cache_entries = {
+        "BUILD_SHARED_LIBS": "OFF",
+        "ENABLE_TESTS": "OFF",
+        "CMAKE_PREFIX_PATH": "$EXT_BUILD_DEPS/mongoc",
+        "BUILD_VERSION": "3.9.0",
+        "CMAKE_CXX_STANDARD": "17",
+    },
+    deps = ["@mongoc"],
+    includes = [
+        "mongocxx/v_noabi",
+        "bsoncxx/v_noabi",
+    ],
+    copts = [
+        "-fPIC",
+        "-DMONGOC_STATIC",
+        "-DBSON_STATIC",
+    ],
+    visibility = ["//visibility:public"],
+)

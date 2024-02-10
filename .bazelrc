@@ -1,0 +1,2 @@
+build --noincompatible_sandbox_hermetic_tmp # Workaround for https://github.com/bazelbuild/rules_foreign_cc/issues/1129
+build --cxxopt=-std=c++17

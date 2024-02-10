@@ -1,0 +1,33 @@
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
+
+filegroup(
+    name = "all_srcs",
+    srcs = glob(["**"]),
+)
+
+cmake(
+    name = "mongoc",
+    lib_source = ":all_srcs",
+    out_static_libs = [
+        "libmongoc-static-1.0.a",
+        "libbson-static-1.0.a",
+    ],
+    env = {
+        "CCACHE_DISABLE": "1",
+    },
+    cache_entries = {
+        "ENABLE_MONGOC": "ON",
+        "BUILD_VERSION": '1.25.4',
+        "ENABLE_AUTOMATIC_INIT_AND_CLEANUP": "OFF",
+        "ENABLE_EXTRA_ALIGNMENT": "OFF",
+    },
+    linkopts = [
+        "-lssl",
+        "-lcrypto",
+        "-lresolv",
+        "-lsasl2",
+        "-lsnappy",
+        "-lzstd",
+    ],
+    visibility = ["//visibility:public"],
+)
