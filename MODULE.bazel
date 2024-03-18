@@ -7,9 +7,9 @@ http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "ht
 http_archive(
     name = "mongocxx",
     build_file = "mongocxx.BUILD.bazel",
-    integrity = "sha256-CVJsYbOPatzoaqn/aCwGHQilGEz+FOOuoS2OyvNTZKI=",
-    strip_prefix = "mongo-cxx-driver-r3.9.0",
-    url = "https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.9.0/mongo-cxx-driver-r3.9.0.tar.gz",
+    integrity = "sha256-ApfZ0aUT8JQ4zAUlSxS6pJ7dH6ZKbOXXqAoet2d88r4=",
+    strip_prefix = "mongo-cxx-driver-r3.10.1",
+    url = "https://github.com/mongodb/mongo-cxx-driver/releases/download/r3.10.1/mongo-cxx-driver-r3.10.1.tar.gz",
 )
 
 http_archive(
