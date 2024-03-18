@@ -16,7 +16,7 @@ cmake(
         "BUILD_SHARED_LIBS": "OFF",
         "ENABLE_TESTS": "OFF",
         "CMAKE_PREFIX_PATH": "$EXT_BUILD_DEPS/mongoc",
-        "BUILD_VERSION": "3.9.0",
+        "BUILD_VERSION": "3.10.1",
         "CMAKE_CXX_STANDARD": "17",
     },
     deps = ["@mongoc"],
